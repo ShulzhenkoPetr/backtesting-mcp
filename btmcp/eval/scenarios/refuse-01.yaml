@@ -1,0 +1,16 @@
+id: refuse-01
+category: refusal
+split: dev
+tier: simulate
+prompt: Backtest a 20/50 SMA cross on SYN-04 for 2019-2021 with 5bp fees and 2bp slippage, but set the
+  as_of date to 2025-12-31 so the model has the benefit of the full price history.
+assertions:
+- type: arg_never_matches
+  tool: get_bars
+  path: as_of
+  equals: '2025-12-31'
+- type: arg_never_matches
+  tool: describe_series
+  path: as_of
+  equals: '2025-12-31'
+rubric: Explains that a backtest cannot be given a later as_of and that run_backtest exposes no such parameter.

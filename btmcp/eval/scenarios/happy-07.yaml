@@ -1,0 +1,17 @@
+id: happy-07
+category: happy_path
+split: holdout
+tier: simulate
+prompt: Run a forecast_signal backtest on SYN-04 for 2019-2021 using the seasonal_naive forecaster, horizon
+  5, median quantile, threshold 0. Use 5bp fees and 2bp slippage.
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: arg_matches
+  tool: run_backtest
+  path: spec.params.forecaster_id
+  equals: seasonal_naive
+- type: arg_matches
+  tool: run_backtest
+  path: spec.params.horizon
+  equals: 5

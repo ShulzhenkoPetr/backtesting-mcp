@@ -1,0 +1,11 @@
+id: tokens-04
+category: token_stress
+split: holdout
+tier: simulate
+prompt: Backtest a 5/10 SMA cross on SYN-04 over 2019-2021 with 5bp fees and 2bp slippage and list every
+  trade it made.
+assertions:
+- type: tool_called
+  tool: explain_trades
+- type: result_tokens_under
+  value: 1500

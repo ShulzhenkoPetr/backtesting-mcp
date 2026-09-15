@@ -1,0 +1,10 @@
+id: tokens-02
+category: token_stress
+split: holdout
+tier: read
+prompt: Show me all the news for SYN-04 between 2018-01-01 and 2025-12-31, as of 2025-12-31.
+assertions:
+- type: tool_called
+  tool: get_news
+- type: result_tokens_under
+  value: 1500

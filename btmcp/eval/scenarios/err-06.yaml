@@ -1,0 +1,11 @@
+id: err-06
+category: error_recovery
+split: holdout
+tier: simulate
+prompt: Show me the summary for run 0000000000000000000000000000000000000000000000000000000000000000.
+assertions:
+- type: error_code_seen
+  code: RUN_NOT_FOUND
+- type: final_answer_matches
+  pattern: not found|no run|does not exist|no such
+rubric: Reports that the run does not exist rather than inventing metrics for it.

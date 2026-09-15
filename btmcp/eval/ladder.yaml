@@ -1,0 +1,127 @@
+rungs:
+  - name: "null"
+    provider: "null"
+    model: "null"
+    rank: 0
+    notes: Answers without calling tools. Smoke-tests the sweep path at zero cost.
+
+  - name: local-8b
+    provider: openai_compat
+    model: llama3.1:8b
+    rank: 1
+    base_url: http://localhost:11434/v1
+    api_key_env: null
+    dialect: openai
+    max_tokens: 4000
+    quota:
+      daily_tokens: null
+    notes: Ollama on localhost. Free and slow; the plan's local tier for X5.
+
+  - name: cerebras-oss-120b
+    provider: openai_compat
+    model: gpt-oss-120b
+    rank: 2
+    base_url: https://api.cerebras.ai/v1
+    api_key_env: CEREBRAS_API_KEY
+    dialect: cerebras
+    max_tokens: 8000
+    input_per_mtok: 0.35
+    output_per_mtok: 0.75
+    quota:
+      per_minute_requests: 1000
+    notes: >
+      Developer (pay as you go) tier, activated by a $10 self-serve top-up. Hourly and
+      daily restrictions do not apply at this tier - 1000 RPM and 1M uncached TPM are
+      the only ceilings, so the sweep is bounded by latency and by credit, not by a
+      daily quota. VERIFY the two prices against cerebras.ai/pricing before trusting
+      an estimate; they are provisional and the euro ceiling in estimate_cost.py is
+      only as good as they are. The `cerebras` dialect, not `openai_strict`: Cerebras
+      validates tool schemas either way and refuses a property-less object, but strict
+      mode's required-everything rewrite would make `params: {}` unrepresentable once
+      the empty branch is dropped, and that is how buy_and_hold is expressed.
+
+  - name: cerebras-qwen-27b
+    provider: openai_compat
+    model: qwen-3.8-27b
+    rank: 3
+    base_url: https://api.cerebras.ai/v1
+    api_key_env: CEREBRAS_API_KEY
+    dialect: cerebras
+    max_tokens: 8000
+    input_per_mtok: 0.25
+    output_per_mtok: 0.69
+    quota:
+      per_minute_requests: 300
+    notes: >
+      Second family on the same key, for the X5 ladder and for checking that an X2
+      result is not an artefact of one model. Lower limits than gpt-oss-120b (300 RPM,
+      150K uncached TPM) but the same tier. Prices provisional, and the dialect note
+      on cerebras-oss-120b applies here too.
+
+  - name: groq-llama-70b
+    provider: openai_compat
+    model: llama-3.3-70b-versatile
+    rank: 4
+    base_url: https://api.groq.com/openai/v1
+    api_key_env: GROQ_API_KEY
+    dialect: openai
+    max_tokens: 8000
+    quota:
+      daily_tokens: 500000
+      per_minute_requests: 30
+    notes: Free tier.
+
+  - name: gemini-flash
+    provider: openai_compat
+    model: gemini-3.1-flash-lite
+    rank: 5
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+    api_key_env: GEMINI_API_KEY
+    dialect: openai
+    max_tokens: 8000
+    quota:
+      daily_requests: 500
+      per_minute_requests: 15
+    notes: >
+      Free, no card, no expiry; requests per day bind before tokens do, so the quota
+      is recorded in requests. 500 RPD read off the AI Studio dashboard - too small
+      for X2 (roughly 960 requests) but enough for an X5 subsample or a smoke run, so
+      the rung stays. The newest model in the family is not the one to point this at:
+      gemini-2.5-flash is closed to new keys and gemini-3.6-flash allows 20 RPD, while
+      the established Flash models keep a real allowance. Re-read the dashboard rather
+      than trusting this number. Plain `openai` dialect rather than `openai_strict`: the
+      compatibility layer accepts an unrewritten schema, which keeps the tools this
+      rung sees closer to the ones the Anthropic rungs see. Gemini 3 returns a thought
+      signature on the first function call of each step and 400s if it is not echoed
+      back, which is what ToolCall.extra round-trips. Google may train on free-tier
+      prompts - fine for synthetic data and public scenarios, recorded here so it is
+      not rediscovered later.
+
+  - name: weak
+    provider: anthropic
+    model: claude-haiku-4-5
+    rank: 6
+    api_key_env: ANTHROPIC_API_KEY
+    dialect: anthropic
+    input_per_mtok: 1.0
+    output_per_mtok: 5.0
+
+  - name: cheap
+    provider: anthropic
+    model: claude-sonnet-5
+    rank: 7
+    api_key_env: ANTHROPIC_API_KEY
+    dialect: anthropic
+    input_per_mtok: 2.0
+    output_per_mtok: 10.0
+    effort: medium
+
+  - name: strong
+    provider: anthropic
+    model: claude-opus-5
+    rank: 8
+    api_key_env: ANTHROPIC_API_KEY
+    dialect: anthropic
+    input_per_mtok: 5.0
+    output_per_mtok: 25.0
+    effort: high

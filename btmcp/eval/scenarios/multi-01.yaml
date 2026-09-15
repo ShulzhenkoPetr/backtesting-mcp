@@ -1,0 +1,15 @@
+id: multi-01
+category: multi_step
+split: dev
+tier: simulate
+prompt: Compare a 20/50 SMA cross against buy-and-hold on SYN-04 over 2019-2021, both with 5bp fees and
+  2bp slippage. Which had the better Sharpe?
+assertions:
+- type: tool_called
+  tool: run_backtest
+  min_times: 2
+- type: tool_called
+  tool: compare_runs
+- type: final_answer_matches
+  pattern: sharpe|sma|buy.?and.?hold
+rubric: Compares both runs on Sharpe and names a winner with its number.

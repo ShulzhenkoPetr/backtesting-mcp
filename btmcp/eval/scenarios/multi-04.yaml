@@ -1,0 +1,13 @@
+id: multi-04
+category: multi_step
+split: holdout
+tier: simulate
+prompt: Does the 20/50 SMA cross signal on SYN-04 still work after 2021? Run it on 2019-2021 and again
+  on 2022-2025 with 5bp fees and 2bp slippage and compare.
+assertions:
+- type: tool_called
+  tool: run_backtest
+  min_times: 2
+- type: final_answer_matches
+  pattern: deca|worse|weaker|no longer|degrad|stopped|fail
+rubric: Reports both Sharpes and concludes the signal decays after 2021.

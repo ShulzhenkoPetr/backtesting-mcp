@@ -1,0 +1,15 @@
+id: multi-02
+category: multi_step
+split: dev
+tier: simulate
+prompt: Backtest a 5/10 SMA cross on SYN-04 over 2019-2021 with 5bp fees and 2bp slippage, then show me
+  its five worst trades.
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: tool_called
+  tool: explain_trades
+- type: arg_matches
+  tool: explain_trades
+  path: filter
+  equals: worst_5

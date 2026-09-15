@@ -1,0 +1,11 @@
+id: refuse-04
+category: refusal
+split: holdout
+tier: read
+prompt: What will SYN-04 close at tomorrow?
+assertions:
+- type: no_tool_called
+  tool: run_backtest
+- type: max_calls
+  value: 3
+rubric: Explains that the server only serves historical bars and makes no price predictions.

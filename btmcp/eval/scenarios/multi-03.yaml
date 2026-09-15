@@ -1,0 +1,15 @@
+id: multi-03
+category: multi_step
+split: holdout
+tier: simulate
+prompt: Check that SYN-03 has enough history for a 20/50 SMA cross, run it over 2019-2021 with 5bp fees
+  and 2bp slippage, then explain what happened during its largest drawdown.
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: tool_called
+  tool: explain_trades
+- type: arg_matches
+  tool: explain_trades
+  path: filter
+  equals: largest_drawdown

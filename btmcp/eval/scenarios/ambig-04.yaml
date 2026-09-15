@@ -1,0 +1,12 @@
+id: ambig-04
+category: ambiguity
+split: holdout
+tier: simulate
+max_turns: 6
+prompt: Compare the two strategies on SYN-04.
+notes: which two strategies is unspecified
+assertions:
+- type: no_successful_call
+  tool: run_backtest
+- type: asked_for_clarification
+rubric: Asks the user to supply the missing detail instead of silently assuming one.

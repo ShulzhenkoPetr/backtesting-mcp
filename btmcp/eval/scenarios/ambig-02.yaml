@@ -1,0 +1,12 @@
+id: ambig-02
+category: ambiguity
+split: dev
+tier: simulate
+max_turns: 6
+prompt: How did the moving average strategy do?
+notes: no symbol, no windows, no period
+assertions:
+- type: no_successful_call
+  tool: run_backtest
+- type: asked_for_clarification
+rubric: Asks the user to supply the missing detail instead of silently assuming one.

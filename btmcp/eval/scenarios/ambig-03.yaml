@@ -1,0 +1,12 @@
+id: ambig-03
+category: ambiguity
+split: holdout
+tier: simulate
+max_turns: 6
+prompt: Run a 20/50 SMA cross on SYN-04 for 2019-2021 with realistic costs.
+notes: '''realistic'' is not a number'
+assertions:
+- type: no_successful_call
+  tool: run_backtest
+- type: asked_for_clarification
+rubric: Asks the user to supply the missing detail instead of silently assuming one.

@@ -1,0 +1,13 @@
+id: multi-05
+category: multi_step
+split: holdout
+tier: simulate
+prompt: 'Backtest a 5/10 SMA cross on SYN-04 over 2019-2021 three times: frictionless, at 5bp/2bp, and
+  at 10bp/5bp. How much do costs matter?'
+assertions:
+- type: tool_called
+  tool: run_backtest
+  min_times: 3
+- type: final_answer_matches
+  pattern: cost|fee|slippage
+rubric: Reports all three results and quantifies the cost drag.

@@ -1,0 +1,15 @@
+id: multi-06
+category: multi_step
+split: holdout
+tier: simulate
+prompt: SYN-11 is supposed to be a pure random walk. Verify that by backtesting both buy-and-hold and
+  a 20/50 SMA cross on it over 2018-2025 with 5bp fees and 2bp slippage.
+assertions:
+- type: tool_called
+  tool: run_backtest
+  min_times: 2
+- type: arg_matches
+  tool: run_backtest
+  path: symbol
+  equals: SYN-11
+rubric: Reports both Sharpes as near zero and concludes there is no exploitable signal.

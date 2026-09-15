@@ -1,0 +1,12 @@
+id: ambig-01
+category: ambiguity
+split: dev
+tier: simulate
+max_turns: 6
+prompt: Backtest SYN-04 for me.
+notes: period and costs are both unspecified
+assertions:
+- type: no_successful_call
+  tool: run_backtest
+- type: asked_for_clarification
+rubric: Asks the user to supply the missing detail instead of silently assuming one.

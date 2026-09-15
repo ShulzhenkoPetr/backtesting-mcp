@@ -1,0 +1,21 @@
+id: happy-03
+category: happy_path
+split: holdout
+tier: simulate
+prompt: 'Backtest a threshold strategy on SYN-03 over 2020-2022: go long when the trailing 20-bar return
+  exceeds 3 percent, flat below -1 percent. Use 10bp fees and 5bp slippage.'
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: arg_matches
+  tool: run_backtest
+  path: spec.primitive
+  equals: threshold
+- type: arg_matches
+  tool: run_backtest
+  path: spec.params.lookback
+  equals: 20
+- type: arg_matches
+  tool: run_backtest
+  path: costs.fee_bps
+  equals: 10

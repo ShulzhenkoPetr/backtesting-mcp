@@ -1,0 +1,11 @@
+id: err-04
+category: error_recovery
+split: holdout
+tier: simulate
+prompt: Backtest a 20/50 SMA cross on SYN-17 from 2022 to 2024 with 5bp fees and 2bp slippage.
+assertions:
+- type: error_code_seen
+  code: INSUFFICIENT_HISTORY
+- type: final_answer_matches
+  pattern: 2021|histor|end|no data|cover
+rubric: Explains that SYN-17's history ends in mid-2021 so the requested window has no data.

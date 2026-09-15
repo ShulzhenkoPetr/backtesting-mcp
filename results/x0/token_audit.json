@@ -1,0 +1,442 @@
+{
+  "budget_tokens": 1500,
+  "n_cases": 41,
+  "over_budget_fraction": 0.0,
+  "global_max": 1222,
+  "per_tool": {
+    "compare_runs": {
+      "n": 1,
+      "p50": 344,
+      "p99": 344,
+      "max": 344,
+      "over_budget": 0
+    },
+    "describe_series": {
+      "n": 3,
+      "p50": 110,
+      "p99": 167,
+      "max": 167,
+      "over_budget": 0
+    },
+    "explain_trades": {
+      "n": 4,
+      "p50": 445,
+      "p99": 1222,
+      "max": 1222,
+      "over_budget": 0
+    },
+    "get_bars": {
+      "n": 27,
+      "p50": 362,
+      "p99": 499,
+      "max": 499,
+      "over_budget": 0
+    },
+    "get_news": {
+      "n": 3,
+      "p50": 273,
+      "p99": 642,
+      "max": 642,
+      "over_budget": 0
+    },
+    "get_run": {
+      "n": 1,
+      "p50": 741,
+      "p99": 741,
+      "max": 741,
+      "over_budget": 0
+    },
+    "list_symbols": {
+      "n": 1,
+      "p50": 644,
+      "p99": 644,
+      "max": 644,
+      "over_budget": 0
+    },
+    "run_backtest": {
+      "n": 1,
+      "p50": 874,
+      "p99": 874,
+      "max": 874,
+      "over_budget": 0
+    }
+  },
+  "rows": [
+    {
+      "tool": "list_symbols",
+      "args": {
+        "as_of": "2025-12-31"
+      },
+      "tokens": 644,
+      "over_budget": false
+    },
+    {
+      "tool": "describe_series",
+      "args": {
+        "symbol": "SYN-01"
+      },
+      "tokens": 93,
+      "over_budget": false
+    },
+    {
+      "tool": "describe_series",
+      "args": {
+        "symbol": "SYN-08"
+      },
+      "tokens": 167,
+      "over_budget": false
+    },
+    {
+      "tool": "describe_series",
+      "args": {
+        "symbol": "SYN-17"
+      },
+      "tokens": 110,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 1,
+        "fields": 0
+      },
+      "tokens": 206,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 1,
+        "fields": 1
+      },
+      "tokens": 198,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 1,
+        "fields": 5
+      },
+      "tokens": 206,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 3,
+        "fields": 0
+      },
+      "tokens": 205,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 3,
+        "fields": 1
+      },
+      "tokens": 197,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 3,
+        "fields": 5
+      },
+      "tokens": 205,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 8,
+        "fields": 0
+      },
+      "tokens": 209,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 8,
+        "fields": 1
+      },
+      "tokens": 201,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 1,
+        "years": 8,
+        "fields": 5
+      },
+      "tokens": 209,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 1,
+        "fields": 0
+      },
+      "tokens": 495,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 1,
+        "fields": 1
+      },
+      "tokens": 487,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 1,
+        "fields": 5
+      },
+      "tokens": 495,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 3,
+        "fields": 0
+      },
+      "tokens": 495,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 3,
+        "fields": 1
+      },
+      "tokens": 487,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 3,
+        "fields": 5
+      },
+      "tokens": 495,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 8,
+        "fields": 0
+      },
+      "tokens": 499,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 8,
+        "fields": 1
+      },
+      "tokens": 491,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 5,
+        "years": 8,
+        "fields": 5
+      },
+      "tokens": 499,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 1,
+        "fields": 0
+      },
+      "tokens": 362,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 1,
+        "fields": 1
+      },
+      "tokens": 354,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 1,
+        "fields": 5
+      },
+      "tokens": 362,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 3,
+        "fields": 0
+      },
+      "tokens": 362,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 3,
+        "fields": 1
+      },
+      "tokens": 354,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 3,
+        "fields": 5
+      },
+      "tokens": 362,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 8,
+        "fields": 0
+      },
+      "tokens": 362,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 8,
+        "fields": 1
+      },
+      "tokens": 354,
+      "over_budget": false
+    },
+    {
+      "tool": "get_bars",
+      "args": {
+        "n_symbols": 20,
+        "years": 8,
+        "fields": 5
+      },
+      "tokens": 362,
+      "over_budget": false
+    },
+    {
+      "tool": "get_news",
+      "args": {
+        "years": 1
+      },
+      "tokens": 141,
+      "over_budget": false
+    },
+    {
+      "tool": "get_news",
+      "args": {
+        "years": 3
+      },
+      "tokens": 273,
+      "over_budget": false
+    },
+    {
+      "tool": "get_news",
+      "args": {
+        "years": 8
+      },
+      "tokens": 642,
+      "over_budget": false
+    },
+    {
+      "tool": "run_backtest",
+      "args": {},
+      "tokens": 874,
+      "over_budget": false
+    },
+    {
+      "tool": "get_run",
+      "args": {},
+      "tokens": 741,
+      "over_budget": false
+    },
+    {
+      "tool": "explain_trades",
+      "args": {
+        "filter": "worst_5"
+      },
+      "tokens": 442,
+      "over_budget": false
+    },
+    {
+      "tool": "explain_trades",
+      "args": {
+        "filter": "best_5"
+      },
+      "tokens": 448,
+      "over_budget": false
+    },
+    {
+      "tool": "explain_trades",
+      "args": {
+        "filter": "largest_drawdown"
+      },
+      "tokens": 1222,
+      "over_budget": false
+    },
+    {
+      "tool": "explain_trades",
+      "args": {
+        "filter": "all_in_window"
+      },
+      "tokens": 94,
+      "over_budget": false
+    },
+    {
+      "tool": "compare_runs",
+      "args": {},
+      "tokens": 344,
+      "over_budget": false
+    }
+  ]
+}

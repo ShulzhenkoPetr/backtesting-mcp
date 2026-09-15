@@ -1,0 +1,13 @@
+id: err-02
+category: error_recovery
+split: dev
+tier: simulate
+prompt: Backtest the 'sma_crossover' primitive on SYN-04 from 2019 to 2021 with fast 20 and slow 50, 5bp
+  fees and 2bp slippage.
+assertions:
+- type: error_code_seen
+  code: INVALID_SPEC
+- type: recovered_after_error
+  tool: run_backtest
+  within: 3
+rubric: Corrects the primitive name from the error message and completes the run.

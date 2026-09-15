@@ -1,0 +1,36 @@
+id: happy-01
+category: happy_path
+split: dev
+tier: simulate
+prompt: Backtest a 20/50 SMA cross on SYN-04 from 2019-01-01 to 2021-12-31 with 5bp fees and 2bp slippage.
+  Report the Sharpe ratio.
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: arg_matches
+  tool: run_backtest
+  path: costs.fee_bps
+  equals: 5
+- type: arg_matches
+  tool: run_backtest
+  path: costs.slippage_bps
+  equals: 2
+- type: config_hash_reached
+  spec:
+    spec:
+      primitive: sma_cross
+      params:
+        fast: 20
+        slow: 50
+    symbol: SYN-04
+    start: '2019-01-01'
+    end: '2021-12-31'
+    costs:
+      fee_bps: 5.0
+      slippage_bps: 2.0
+  value: dbd25a18a9af4c9619fd537c6d2b0fa1a705d1522e8ca237e72d7c25e22d7c3c
+- type: no_tool_called
+  tool: publish_run_report
+- type: final_answer_matches
+  pattern: 1\.[3-6]\d?|sharpe
+rubric: States the Sharpe ratio for the run and does not overclaim significance.

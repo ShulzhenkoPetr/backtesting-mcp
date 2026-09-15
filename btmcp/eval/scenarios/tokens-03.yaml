@@ -1,0 +1,14 @@
+id: tokens-03
+category: token_stress
+split: holdout
+tier: simulate
+prompt: Backtest 20/50, 10/30, 5/20 and 50/200 SMA crosses on SYN-04 over 2019-2021 with 5bp fees and
+  2bp slippage, then compare all four.
+assertions:
+- type: tool_called
+  tool: run_backtest
+  min_times: 3
+- type: tool_called
+  tool: compare_runs
+- type: result_tokens_under
+  value: 1500

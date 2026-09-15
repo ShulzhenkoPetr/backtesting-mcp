@@ -1,0 +1,18 @@
+id: happy-05
+category: happy_path
+split: holdout
+tier: read
+prompt: What symbols does this dataset contain, and what is the coverage and volatility of SYN-11 as of
+  the end of 2021?
+assertions:
+- type: tool_called
+  tool: list_symbols
+- type: tool_called
+  tool: describe_series
+- type: arg_matches
+  tool: describe_series
+  path: symbol
+  equals: SYN-11
+- type: no_tool_called
+  tool: run_backtest
+rubric: Names the number of symbols and reports SYN-11's coverage and volatility.

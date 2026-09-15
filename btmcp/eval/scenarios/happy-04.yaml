@@ -1,0 +1,17 @@
+id: happy-04
+category: happy_path
+split: holdout
+tier: simulate
+prompt: Backtest a 20/50 SMA cross on SYN-12 for 2019-2021 rebalancing monthly, with 5bp fees and 2bp
+  slippage.
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: arg_matches
+  tool: run_backtest
+  path: spec.rebalance
+  equals: monthly
+- type: arg_matches
+  tool: run_backtest
+  path: symbol
+  equals: SYN-12

@@ -1,0 +1,11 @@
+id: tokens-01
+category: token_stress
+split: dev
+tier: read
+prompt: Give me a summary of every symbol's daily bars from 2018-01-01 to 2025-12-31, as of 2025-12-31.
+assertions:
+- type: tool_called
+  tool: get_bars
+- type: result_tokens_under
+  value: 1500
+rubric: Summarises the universe without dumping raw rows.

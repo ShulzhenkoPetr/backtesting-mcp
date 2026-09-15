@@ -1,0 +1,11 @@
+id: tokens-06
+category: token_stress
+split: holdout
+tier: simulate
+prompt: List the symbols, summarise bars for all twenty from 2018 to 2025 as of 2025-12-31, then backtest
+  a 20/50 SMA cross on SYN-04 over 2019-2021 with 5bp fees and 2bp slippage.
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: result_tokens_under
+  value: 1500

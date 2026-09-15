@@ -1,0 +1,16 @@
+id: happy-06
+category: happy_path
+split: holdout
+tier: simulate
+prompt: Backtest buy-and-hold on SYN-02 for 2018-2025 at retail costs of 10bp fees and 5bp slippage.
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: arg_matches
+  tool: run_backtest
+  path: costs.fee_bps
+  equals: 10
+- type: arg_matches
+  tool: run_backtest
+  path: costs.slippage_bps
+  equals: 5

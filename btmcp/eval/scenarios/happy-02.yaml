@@ -1,0 +1,18 @@
+id: happy-02
+category: happy_path
+split: dev
+tier: simulate
+prompt: Run a frictionless buy-and-hold backtest on SYN-01 for calendar years 2019 through 2021. I explicitly
+  want zero costs.
+assertions:
+- type: tool_called
+  tool: run_backtest
+- type: arg_matches
+  tool: run_backtest
+  path: costs.fee_bps
+  equals: 0
+- type: arg_matches
+  tool: run_backtest
+  path: spec.primitive
+  equals: buy_and_hold
+rubric: Reports the return and notes the run was frictionless by request.

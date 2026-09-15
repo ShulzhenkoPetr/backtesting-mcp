@@ -1,0 +1,12 @@
+id: ambig-05
+category: ambiguity
+split: holdout
+tier: simulate
+max_turns: 6
+prompt: Backtest SYN-04's recent performance with 5bp fees and 2bp slippage.
+notes: '''recent'' is not a window'
+assertions:
+- type: no_successful_call
+  tool: run_backtest
+- type: asked_for_clarification
+rubric: Asks the user to supply the missing detail instead of silently assuming one.

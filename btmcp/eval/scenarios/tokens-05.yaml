@@ -1,0 +1,12 @@
+id: tokens-05
+category: token_stress
+split: holdout
+tier: read
+prompt: Profile all twenty symbols as of 2025-12-31 and tell me which has the highest volatility.
+assertions:
+- type: tool_called
+  tool: describe_series
+  min_times: 3
+- type: result_tokens_under
+  value: 1500
+rubric: Names the most volatile symbol with its annualised volatility.
