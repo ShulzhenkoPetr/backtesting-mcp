@@ -16,7 +16,6 @@ from btmcp.server.guardrails.audit import AuditMiddleware
 from btmcp.server.guardrails.auth import TierMiddleware
 from btmcp.server.guardrails.errors import typed_errors
 
-
 AS_OF_DESC = (
     "REQUIRED point-in-time cutoff. There is no default and no safe guess. "
     "No bar dated after this is returned, ever. Set it to the decision date you are "

@@ -43,6 +43,13 @@ def _measurable(result: Any) -> Any:
     return result
 
 
+def _is_error(result: Any) -> bool:
+    """True for a `CallToolResult` flagged `isError`, whether a model or its wire dict."""
+    if isinstance(result, dict):
+        return bool(result.get("isError"))
+    return bool(getattr(result, "is_error", False))
+
+
 def arg_hash(arguments: Any) -> str:
     return hashlib.sha256(json.dumps(arguments, sort_keys=True, default=str).encode()).hexdigest()[:16]
 
@@ -130,6 +137,19 @@ class AuditMiddleware:
                 error_code="INTERNAL_ERROR",
             )
             raise
+
+        if _is_error(result):
+            # The SDK reports schema-rejected arguments (and ToolErrors) as an
+            # `isError` result rather than raising, so they are errors here too.
+            self.log.record(
+                tool,
+                arguments,
+                (time.perf_counter() - started) * 1000.0,
+                outcome="error",
+                result=result,
+                error_code="TOOL_ERROR_RESULT",
+            )
+            return result
 
         self.log.record(
             tool, arguments, (time.perf_counter() - started) * 1000.0, outcome="ok", result=result

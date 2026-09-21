@@ -173,10 +173,12 @@ async def test_audit_log_records_every_call(tmp_path: Path) -> None:
     async with surface(tmp_path) as (c, services):
         await c.call_tool("list_symbols", {"as_of": AS_OF})
         await c.call_tool("describe_series", {"symbol": "SYN-04", "as_of": AS_OF})
-        with pytest.raises(MCPError):
-            await c.call_tool(
-                "get_bars", {"symbols": ["NOPE"], "start": "2019-01-01", "end": "2020-01-01", "as_of": AS_OF}
-            )
+        # "NOPE" is outside the symbol enum, so the SDK rejects it before the handler
+        # runs and reports an `is_error` result rather than raising MCPError.
+        rejected = await c.call_tool(
+            "get_bars", {"symbols": ["NOPE"], "start": "2019-01-01", "end": "2020-01-01", "as_of": AS_OF}
+        )
+        assert rejected.is_error
         records = list(services.audit.records)
         audit_path = services.audit.path
 

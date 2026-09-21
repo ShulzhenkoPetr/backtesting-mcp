@@ -40,10 +40,9 @@ def load_surface(surface: str) -> Callable[[AppConfig], tuple[Any, Any]]:
         from btmcp.server.surface_a import build
 
         return build
-    try:
-        from btmcp.server.surface_b import build as build_b
-    except ModuleNotFoundError:
-        raise SystemExit("surface 'b' is not implemented yet (ticket E6-T1). Run with --surface a.") from None
+
+    from btmcp.server.surface_b import build as build_b
+
     return build_b
 
 
