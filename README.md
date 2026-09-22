@@ -3,6 +3,8 @@
 Two tool surfaces over one backtesting core, built to measure how reliably language
 models use each one. The backtester is deliberately modest. 
 
+[LinkedIn post](https://www.linkedin.com/posts/petr-shulzhenko_mcp-ablation-results-ugcPost-7508195786858426369-gwFc/)
+
 ## Get started
 
 ```bash
